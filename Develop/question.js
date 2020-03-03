@@ -8,6 +8,9 @@ const http = require("http");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 const render = require("./lib/htmlRenderer");
+const express = require("express");
+const app = express();
+const employees = [];
 
 //Code to use inquirer to gather information about the development team members,
 async function askquestions() {
@@ -35,7 +38,6 @@ async function askquestions() {
     }
   ]);
   //create objects for each team member (using the correct classes as blueprints!)
-  const employees = [];
 
   switch (res.role) {
     case "Manager":
@@ -49,6 +51,7 @@ async function askquestions() {
       employees.push(
         new Manager(res.name, res.id, res.email, phone.officeNumber)
       );
+      newEmployee();
       break;
     case "Engineer":
       const gitHub = await inquirer.prompt([
@@ -61,6 +64,7 @@ async function askquestions() {
       employees.push(
         new Engineer(res.name, res.id, res.email, gitHub.gitHubUserName)
       );
+      newEmployee();
       break;
     case "Intern":
       const school = await inquirer.prompt([
@@ -73,14 +77,30 @@ async function askquestions() {
       employees.push(
         new Intern(res.name, res.id, res.email, school.schoolName)
       );
+      newEmployee();
       break;
     default:
   }
   // employees aray with all employer
   // render ( employees)
 }
-
 askquestions();
+
+async function newEmployee() {
+  const addMoreEmployee = await inquirer.prompt([
+    {
+      type: "confirm",
+      name: "addAgain",
+      message: "Do you want to add another employee?"
+    }
+  ]);
+  if (addMoreEmployee.addAgain == true) {
+    askquestions();
+  } else {
+    console.log(employees);
+  }
+}
+
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
