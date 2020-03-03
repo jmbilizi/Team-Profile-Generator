@@ -51,7 +51,7 @@ async function askquestions() {
       employees.push(
         new Manager(res.name, res.id, res.email, phone.officeNumber)
       );
-      newEmployee();
+      addAnotherEmployee();
       break;
     case "Engineer":
       const gitHub = await inquirer.prompt([
@@ -64,7 +64,7 @@ async function askquestions() {
       employees.push(
         new Engineer(res.name, res.id, res.email, gitHub.gitHubUserName)
       );
-      newEmployee();
+      addAnotherEmployee();
       break;
     case "Intern":
       const school = await inquirer.prompt([
@@ -77,7 +77,7 @@ async function askquestions() {
       employees.push(
         new Intern(res.name, res.id, res.email, school.schoolName)
       );
-      newEmployee();
+      addAnotherEmployee();
       break;
     default:
   }
@@ -86,7 +86,7 @@ async function askquestions() {
 }
 askquestions();
 
-async function newEmployee() {
+async function addAnotherEmployee() {
   const addMoreEmployee = await inquirer.prompt([
     {
       type: "confirm",
