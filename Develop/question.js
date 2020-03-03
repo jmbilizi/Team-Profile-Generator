@@ -81,8 +81,8 @@ async function askquestions() {
       break;
     default:
   }
+  
   // employees aray with all employer
-  // render ( employees)
 }
 askquestions();
 
@@ -94,11 +94,7 @@ async function addAnotherEmployee() {
       message: "Do you want to add another employee?"
     }
   ]);
-  if (addMoreEmployee.addAgain == true) {
-    askquestions();
-  } else {
-    console.log(employees);
-  }
+  addMoreEmployee.addAgain == true ? askquestions() : console.log(employees);
 }
 
 // After the user has input all employees desired, call the `render` function (required
