@@ -81,8 +81,6 @@ async function askquestions() {
       break;
     default:
   }
-
-  // employees aray with all employer
 }
 askquestions();
 
@@ -94,8 +92,17 @@ async function addAnotherEmployee() {
       message: "Do you want to add another employee?"
     }
   ]);
-  addMoreEmployee.addAgain == true ? askquestions() : console.log(employees);
+  addMoreEmployee.addAgain == true ? askquestions() : buildTeam(employees);
 }
+
+function buildTeam(employees) {
+  // Create the output directory if the output path doesn’t exist
+  if (!fs.existsSync(OUTPUT_DIR)) {
+    fs.mkdirSync(OUTPUT_DIR);
+  }
+  fs.writeFileSync(outputPath, render(employees), "utf-8");
+}
+
 // render ( employees)
 // and to create objects for each team member (using the correct classes as blueprints!)
 // After the user has input all employees desired, call the `render` function (required
