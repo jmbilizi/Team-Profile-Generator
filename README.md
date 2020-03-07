@@ -18,7 +18,7 @@ This is a node js application and does not need installation. it is currently ho
 
 <strong>Usage</strong>
 
-This website is simple, clean, easy to use and undertand. When you go to the site, the header displays your today's day and date. below that, it displays a calendar with your work hours, 9 AM to 5PM. if that time is passed, the next column will have a silver color background that says <i> passed time or the event saved</i> and will not allow you to record or save a new event. if that time is a current time, the next column will have a red color background that says <i>current time or the event saved</i> . if that time is a future time, the next column will have a green color background that says coming time or the event saved. they all provide you an input that allows you to record your event or edit it.
+This application is simple, clean, easy to use and undertand. After cloning, installing node and opening the package in your code editor, you simply open the file Develop/app.js in console, then type node app.js. After that you will be prompt to answer questions related to the employee you want to add (name, id, email, job position and additional information depending on the employee's job position). After the last employee is entered, a output folder will be created automaticly and will contain team.html(page for your team members).
 
 <strong>Support and Contribution</strong>
 
