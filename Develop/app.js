@@ -72,7 +72,7 @@ async function askquestions() {
         {
           type: "input",
           name: "schoolName",
-          message: "Which school does the intern go too?"
+          message: "Which school does the intern go to?"
         }
       ]);
       employees.push(
